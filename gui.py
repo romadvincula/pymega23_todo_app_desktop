@@ -1,8 +1,14 @@
 import functions
 import PySimpleGUI as sg
 import time
+import os
+
 TIME_FORMAT = "%b %d, %Y %H:%M:%S"
 THEME = "DarkGreen1"
+
+if not os.path.exists(functions.FILEPATH):
+    with open(functions.FILEPATH, "w") as f:
+        pass
 
 sg.theme(THEME)
 clock = sg.Text("", key='clock')
@@ -26,8 +32,8 @@ window = sg.Window('My To-Do App',
 while True:
     event, values = window.read(timeout=200)
     window["clock"].update(value=time.strftime(TIME_FORMAT))
-    # print(event)
-    # print(values)
+    print(event)
+    print(values)
     if event == "Add":
         todos = functions.get_todos()
         new_todo = values['todo'] + "\n"
@@ -36,7 +42,10 @@ while True:
         window['current_todos'].update(values=todos)
 
     elif event == "current_todos":
-        window['todo'].update(value=values['current_todos'][0])
+        if not values['current_todos']:
+            continue
+        else:
+            window['todo'].update(value=values['current_todos'][0])
 
     elif event == "Edit":
         try:
