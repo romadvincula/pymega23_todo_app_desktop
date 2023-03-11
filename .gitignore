@@ -2,3 +2,5 @@ venv
 compressed.zip
 unzipped/*
 todos_item.txt
+build
+dist

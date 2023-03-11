@@ -76,3 +76,6 @@ while True:
         break
 
 window.close()
+
+# install pyinstaller and run command to create executable for windows:
+# pyinstaller --onefile --windowed --clean gui.py
