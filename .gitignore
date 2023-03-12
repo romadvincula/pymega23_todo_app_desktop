@@ -4,3 +4,6 @@ unzipped/*
 todos_item.txt
 build
 dist
+gui.spec
+build/
+dist/
